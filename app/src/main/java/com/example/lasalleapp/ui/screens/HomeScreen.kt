@@ -53,9 +53,11 @@ import com.example.lasalleapp.utils.Screens
 import com.example.lasalleapp.utils.Task
 import com.example.lasalleapp.utils.communities
 import com.example.lasalleapp.utils.newsList
+import com.example.lasalleapp.utils.users
 
 @Composable
 fun HomeScreen(innerPadding: PaddingValues, navController: NavController) {
+    val user = users[0]
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -103,7 +105,7 @@ fun HomeScreen(innerPadding: PaddingValues, navController: NavController) {
                         fontSize = 18.sp
                     )
                     Text(
-                        text = "Uriel Mata",
+                        text = "${user.name} ${user.lastName}",
                         color = MaterialTheme.colorScheme.onPrimary,
                         fontSize = 22.sp,
                         fontWeight = FontWeight.W900

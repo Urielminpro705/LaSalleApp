@@ -143,7 +143,7 @@ fun SettingsScreen (innerPadding: PaddingValues, navController: NavController){
                         navController.navigate(Screens.ChangePassword.route)
                     }
                     Widget(icon = Icons.Default.Build, title = "Cambiar tema") {
-                        navController.navigate(Screens.ChangePassword.route)
+                        navController.navigate(Screens.ChangeTheme.route)
                     }
                 }
             }

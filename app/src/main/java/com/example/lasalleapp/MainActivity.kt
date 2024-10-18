@@ -37,6 +37,7 @@ import androidx.navigation.navArgument
 import com.example.lasalleapp.models.BottomNavigationItem
 import com.example.lasalleapp.ui.screens.CalendarScreen
 import com.example.lasalleapp.ui.screens.ChangePasswordScreen
+import com.example.lasalleapp.ui.screens.ChangeThemeScreen
 import com.example.lasalleapp.ui.screens.GradesScreen
 import com.example.lasalleapp.ui.screens.HomeScreen
 import com.example.lasalleapp.ui.screens.NewsDetailsScreen
@@ -118,10 +119,11 @@ class MainActivity : ComponentActivity() {
                             val newsId = it.arguments?.getInt("newsId") ?: 0
                             NewsDetailsScreen(innerPadding = innerPadding, newsId = newsId)
                         }
-                        composable(
-                            route = Screens.ChangePassword.route
-                        ) {
+                        composable(route = Screens.ChangePassword.route) {
                             ChangePasswordScreen(innerPadding = innerPadding)
+                        }
+                        composable(route = Screens.ChangeTheme.route) {
+                            ChangeThemeScreen(innerPadding = innerPadding)
                         }
                     }
                 }
