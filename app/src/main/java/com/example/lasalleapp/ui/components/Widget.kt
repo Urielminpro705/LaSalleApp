@@ -1,8 +1,10 @@
 package com.example.lasalleapp.ui.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -15,20 +17,25 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.lasalleapp.ui.theme.LaSalleAppTheme
+import com.example.lasalleapp.utils.Screens
 
 @Composable
-fun Widget(icon : ImageVector, title : String){
+fun Widget(icon : ImageVector, title : String, onClick : () -> Unit){
     Box(
         modifier = Modifier
             .clip(RoundedCornerShape(10.dp))
             .size(90.dp)
-            .background(MaterialTheme.colorScheme.background),
+            .background(MaterialTheme.colorScheme.background)
+            .clickable { onClick() },
         contentAlignment = Alignment.Center
     ) {
         Column(
+            modifier = Modifier
+                .padding(start = 5.dp, end = 5.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Icon(
@@ -40,7 +47,8 @@ fun Widget(icon : ImageVector, title : String){
             Text(
                 text = title,
                 color = MaterialTheme.colorScheme.primary,
-                style = MaterialTheme.typography.bodySmall
+                style = MaterialTheme.typography.bodySmall,
+                textAlign = TextAlign.Center
             )
         }
     }
@@ -50,6 +58,6 @@ fun Widget(icon : ImageVector, title : String){
 @Composable
 fun WidgetPreview(){
     LaSalleAppTheme {
-        Widget(icon = Icons.Default.Home, title = "Hola")
+        Widget(icon = Icons.Default.Home, title = "Hola"){}
     }
 }

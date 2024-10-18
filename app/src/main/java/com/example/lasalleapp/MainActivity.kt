@@ -1,9 +1,11 @@
 package com.example.lasalleapp
 
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -34,6 +36,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.lasalleapp.models.BottomNavigationItem
 import com.example.lasalleapp.ui.screens.CalendarScreen
+import com.example.lasalleapp.ui.screens.ChangePasswordScreen
 import com.example.lasalleapp.ui.screens.GradesScreen
 import com.example.lasalleapp.ui.screens.HomeScreen
 import com.example.lasalleapp.ui.screens.NewsDetailsScreen
@@ -44,6 +47,7 @@ import com.exyte.animatednavbar.AnimatedNavigationBar
 import com.exyte.animatednavbar.animation.indendshape.shapeCornerRadius
 
 class MainActivity : ComponentActivity() {
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -101,7 +105,7 @@ class MainActivity : ComponentActivity() {
                             CalendarScreen(innerPadding = innerPadding)
                         }
                         composable(route = Screens.Settings.route){
-                            SettingsScreen(innerPadding = innerPadding)
+                            SettingsScreen(innerPadding = innerPadding, navController = navController)
                         }
                         composable(
                             route = Screens.NewsDetail.route+"/{newsId}",
@@ -113,6 +117,11 @@ class MainActivity : ComponentActivity() {
                         ){
                             val newsId = it.arguments?.getInt("newsId") ?: 0
                             NewsDetailsScreen(innerPadding = innerPadding, newsId = newsId)
+                        }
+                        composable(
+                            route = Screens.ChangePassword.route
+                        ) {
+                            ChangePasswordScreen(innerPadding = innerPadding)
                         }
                     }
                 }

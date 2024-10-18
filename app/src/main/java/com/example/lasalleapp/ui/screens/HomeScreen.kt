@@ -134,9 +134,9 @@ fun HomeScreen(innerPadding: PaddingValues, navController: NavController) {
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ){
-                Widget(icon = Icons.Default.DateRange, title ="Sin eventos" )
-                Widget(icon = Task, title ="2 Tareas" )
-                Widget(icon = Cash, title ="Pagos" )
+                Widget(icon = Icons.Default.DateRange, title ="Sin eventos" ){}
+                Widget(icon = Task, title ="2 Tareas" ){}
+                Widget(icon = Cash, title ="Pagos" ){}
             }
         }
 
