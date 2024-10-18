@@ -1,0 +1,15 @@
+package com.example.lasalleapp.models
+
+import androidx.compose.ui.graphics.vector.ImageVector
+import java.time.LocalDate
+import java.util.Date
+
+data class User (
+    val name : String,
+    val lastName : String,
+    val secondLastName : String,
+    val birthDay : LocalDate,
+    val email : String,
+    val password : String,
+    val img : String
+)
