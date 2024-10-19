@@ -50,9 +50,9 @@ fun SubjectScreen (innerPadding : PaddingValues, subjectId : Int){
             fontSize = 18.sp,
         )
 
-        OptionItem(info = subject.grade1.toString(), text = "Primer Parcial", icon = if (subject.grade1 >= 7) Icons.Default.CheckCircle else Icons.Default.Warning)
-        OptionItem(info = subject.grade2.toString(), text = "Segundo Parcial", icon = if (subject.grade2 >= 7) Icons.Default.CheckCircle else Icons.Default.Warning)
-        OptionItem(info = subject.grade3.toString(), text = "Tercer Parcial", icon = if (subject.grade3 >= 7) Icons.Default.CheckCircle else Icons.Default.Warning)
+        OptionItem(info = subject.grade1.toString(), text = "Primer Parcial", icon = if (subject.grade1 >= 6) Icons.Default.CheckCircle else Icons.Default.Warning)
+        OptionItem(info = subject.grade2.toString(), text = "Segundo Parcial", icon = if (subject.grade2 >= 6) Icons.Default.CheckCircle else Icons.Default.Warning)
+        OptionItem(info = subject.grade3.toString(), text = "Tercer Parcial", icon = if (subject.grade3 >= 6) Icons.Default.CheckCircle else Icons.Default.Warning)
     }
 }
 

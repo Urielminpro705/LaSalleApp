@@ -41,10 +41,12 @@ import com.example.lasalleapp.ui.screens.ChangeThemeScreen
 import com.example.lasalleapp.ui.screens.GradesScreen
 import com.example.lasalleapp.ui.screens.HomeScreen
 import com.example.lasalleapp.ui.screens.NewsDetailsScreen
+import com.example.lasalleapp.ui.screens.PaymentsScreen
 import com.example.lasalleapp.ui.screens.SettingsScreen
 import com.example.lasalleapp.ui.screens.SubjectScreen
 import com.example.lasalleapp.ui.theme.LaSalleAppTheme
 import com.example.lasalleapp.utils.Screens
+import com.example.lasalleapp.utils.users
 import com.exyte.animatednavbar.AnimatedNavigationBar
 import com.exyte.animatednavbar.animation.indendshape.shapeCornerRadius
 
@@ -136,6 +138,9 @@ class MainActivity : ComponentActivity() {
                         ) {
                             val subjectId = it.arguments?.getInt("subjectId") ?: 0
                             SubjectScreen(innerPadding = innerPadding, subjectId = subjectId)
+                        }
+                        composable(route = Screens.Payments.route) {
+                            PaymentsScreen(innerPadding = innerPadding, user = users[0])
                         }
                     }
                 }

@@ -5,6 +5,7 @@ import androidx.annotation.RequiresApi
 import com.example.lasalleapp.models.Community
 import com.example.lasalleapp.models.Major
 import com.example.lasalleapp.models.News
+import com.example.lasalleapp.models.Payment
 import com.example.lasalleapp.models.Subject
 import com.example.lasalleapp.models.User
 import java.time.LocalDate
@@ -56,7 +57,15 @@ val majors = listOf(
     Major("Ingenieria de Software y Sistemas Computacionales", subjects)
 )
 
+val payments = listOf(
+    Payment("Agosto",10000.0, true),
+    Payment("Septiembre",10000.0, true),
+    Payment("Octubre",10000.0, true),
+    Payment("Noviembre",10000.0, false),
+    Payment("Diciembre",10000.0, false)
+)
+
 @RequiresApi(Build.VERSION_CODES.O)
 val users = listOf(
-    User(76907,"Uriel","Mata","Castellanos", LocalDate.of(2004, 8, 26), "urielmata37@hotmail.com","12345678", "https://i.redd.it/tvkjwzeb50f41.jpg", majors[0], 5)
+    User(76907,"Uriel","Mata","Castellanos", LocalDate.of(2004, 8, 26), "urielmata37@hotmail.com","12345678", "https://i.redd.it/tvkjwzeb50f41.jpg", majors[0], 5, payments = payments)
 )

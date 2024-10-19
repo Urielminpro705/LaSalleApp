@@ -14,5 +14,6 @@ data class User (
     val password : String,
     val img : String,
     val major : Major,
-    val semester : Int
+    val semester : Int,
+    val payments : List<Payment>
 )
