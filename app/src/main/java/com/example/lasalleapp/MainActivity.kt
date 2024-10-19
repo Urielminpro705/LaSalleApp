@@ -42,6 +42,7 @@ import com.example.lasalleapp.ui.screens.GradesScreen
 import com.example.lasalleapp.ui.screens.HomeScreen
 import com.example.lasalleapp.ui.screens.NewsDetailsScreen
 import com.example.lasalleapp.ui.screens.SettingsScreen
+import com.example.lasalleapp.ui.screens.SubjectScreen
 import com.example.lasalleapp.ui.theme.LaSalleAppTheme
 import com.example.lasalleapp.utils.Screens
 import com.exyte.animatednavbar.AnimatedNavigationBar
@@ -100,7 +101,7 @@ class MainActivity : ComponentActivity() {
                             HomeScreen(innerPadding = innerPadding, navController = navController)
                         }
                         composable(route = Screens.Grades.route){
-                            GradesScreen(innerPadding = innerPadding)
+                            GradesScreen(innerPadding = innerPadding, navController = navController)
                         }
                         composable(route = Screens.Calendar.route){
                             CalendarScreen(innerPadding = innerPadding)
@@ -124,6 +125,17 @@ class MainActivity : ComponentActivity() {
                         }
                         composable(route = Screens.ChangeTheme.route) {
                             ChangeThemeScreen(innerPadding = innerPadding)
+                        }
+                        composable(
+                            route = Screens.Subject.route+"/{subjectId}",
+                            arguments = listOf(
+                                navArgument("subjectId"){
+                                    type = NavType.IntType
+                                }
+                            )
+                        ) {
+                            val subjectId = it.arguments?.getInt("subjectId") ?: 0
+                            SubjectScreen(innerPadding = innerPadding, subjectId = subjectId)
                         }
                     }
                 }

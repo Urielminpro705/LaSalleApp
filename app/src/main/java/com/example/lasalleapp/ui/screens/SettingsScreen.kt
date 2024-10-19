@@ -57,95 +57,57 @@ import com.example.lasalleapp.utils.users
 @Composable
 fun SettingsScreen (innerPadding: PaddingValues, navController: NavController){
     val user : User = users[0]
-    Column (
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(innerPadding)
-            .background(MaterialTheme.colorScheme.onPrimary)
-            .verticalScroll(
-                rememberScrollState()
-            ),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ){
-        Box (
+    DisplayInfoScreen(innerPadding = innerPadding) {
+        Box(
             modifier = Modifier
+                .width(130.dp)
+                .height(130.dp)
+                .clip(RoundedCornerShape(75.dp))
                 .background(MaterialTheme.colorScheme.primary),
-            contentAlignment = Alignment.Center
-        ){
-            Image(
-                painter = painterResource(id = R.drawable.background),
-                contentDescription = "background",
+        ) {
+            AsyncImage(
+                model = user.img,
+                contentDescription = "Profile picture",
                 modifier = Modifier
                     .fillMaxWidth(),
                 contentScale = ContentScale.Crop
             )
         }
-        Box (
+        Text (
+            modifier = Modifier
+                .padding(top = 20.dp),
+            text = "${user.name} ${user.lastName} ${user.secondLastName}",
+            fontSize = 20.sp,
+            style = MaterialTheme.typography.titleLarge,
+            color = MaterialTheme.colorScheme.primary
+        )
+
+        OptionItem(user.name, "Nombre del Alumno",icon = Icons.Default.Person)
+        OptionItem(user.lastName, "Apellido Paterno",icon = Icons.Default.Person)
+        OptionItem(user.secondLastName, "Apellido Materno",icon = Icons.Default.Person)
+        OptionItem(user.email, "Correo Electronico",icon = Icons.Default.Email)
+        OptionItem(user.birthDay.toString(), "Fecha de nacimiento",icon = Icons.Default.DateRange)
+
+        Text(
+            text = "Ajustes",
             modifier = Modifier
                 .fillMaxWidth()
-                .offset(y = (-120).dp)
-                .clip(RoundedCornerShape(topStart = 40.dp, topEnd = 40.dp))
-
-        ){
-            Column (
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(MaterialTheme.colorScheme.onPrimary)
-                    .padding(top = 30.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Box(
-                    modifier = Modifier
-                        .width(130.dp)
-                        .height(130.dp)
-                        .clip(RoundedCornerShape(75.dp))
-                        .background(MaterialTheme.colorScheme.primary),
-                ) {
-                    AsyncImage(
-                        model = user.img,
-                        contentDescription = "Profile picture",
-                        modifier = Modifier
-                            .fillMaxWidth(),
-                        contentScale = ContentScale.Crop
-                    )
-                }
-                Text (
-                    modifier = Modifier
-                        .padding(top = 20.dp),
-                    text = "${user.name} ${user.lastName} ${user.secondLastName}",
-                    fontSize = 20.sp,
-                    style = MaterialTheme.typography.titleLarge,
-                    color = MaterialTheme.colorScheme.primary
-                )
-
-                OptionItem(user.name, "Nombre del Alumno",icon = Icons.Default.Person)
-                OptionItem(user.lastName, "Apellido Paterno",icon = Icons.Default.Person)
-                OptionItem(user.secondLastName, "Apellido Materno",icon = Icons.Default.Person)
-                OptionItem(user.email, "Correo Electronico",icon = Icons.Default.Email)
-                OptionItem(user.birthDay.toString(), "Fecha de nacimiento",icon = Icons.Default.DateRange)
-
-                Text(
-                    text = "Ajustes",
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 20.dp, top = 30.dp, bottom = 10.dp),
-                    fontSize = 19.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onBackground
-                )
-                Row (
-                    modifier = Modifier
-                        .padding(start = 20.dp)
-                        .fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(10.dp)
-                ) {
-                    Widget(icon = Icons.Default.Lock, title = "Cambiar contraseña") {
-                        navController.navigate(Screens.ChangePassword.route)
-                    }
-                    Widget(icon = Icons.Default.Build, title = "Cambiar tema") {
-                        navController.navigate(Screens.ChangeTheme.route)
-                    }
-                }
+                .padding(start = 20.dp, top = 30.dp, bottom = 10.dp),
+            fontSize = 19.sp,
+            fontWeight = FontWeight.Bold,
+            color = MaterialTheme.colorScheme.onBackground
+        )
+        Row (
+            modifier = Modifier
+                .padding(start = 20.dp)
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(10.dp)
+        ) {
+            Widget(icon = Icons.Default.Lock, title = "Cambiar contraseña") {
+                navController.navigate(Screens.ChangePassword.route)
+            }
+            Widget(icon = Icons.Default.Build, title = "Cambiar tema") {
+                navController.navigate(Screens.ChangeTheme.route)
             }
         }
     }

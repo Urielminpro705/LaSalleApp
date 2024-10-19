@@ -1,6 +1,8 @@
 package com.example.lasalleapp.ui.screens
 
+import android.os.Build
 import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -55,6 +57,7 @@ import com.example.lasalleapp.utils.communities
 import com.example.lasalleapp.utils.newsList
 import com.example.lasalleapp.utils.users
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun HomeScreen(innerPadding: PaddingValues, navController: NavController) {
     val user = users[0]
@@ -197,6 +200,7 @@ fun HomeScreen(innerPadding: PaddingValues, navController: NavController) {
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Preview(
     showBackground = true,
     showSystemUi = true
